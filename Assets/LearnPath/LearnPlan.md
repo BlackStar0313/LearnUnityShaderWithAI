@@ -1,194 +1,225 @@
-# URP特有功能和工具学习计划
+# URP Shader与Render Features学习计划
 
-## 阶段一：Shader Graph基础（2-3天）
+## 阶段一：URP Shader基础（3天）
 
-### 第1天：Shader Graph入门
-1. 基本概念：
-   - 节点系统的基本理念
-   - Shader Graph窗口界面
-   - 基本节点类型
+### 第1天：URP Shader结构与基础
+1. **URP Shader结构差异**：
+   - URP管线下的Shader基本结构
+   - ShaderLab与HLSL部分的区别
+   - URP特有标签和渲染队列
 
-2. 创建第一个Shader Graph：
-   - 纹理采样和基本颜色混合
-   - UV操作和动画
-   - 导出材质使用
+2. **URP内置光照模型**：
+   - Universal Lit模型
+   - Universal Unlit模型
+   - 光照函数库使用
 
-3. 练习项目：
-   - 创建一个简单的纹理动画材质
-   - 实现颜色渐变效果
+3. **练习项目**：
+   - 将LearnTexture.shader转换为URP版本
+   - 实现URP基础纹理Shader
 
-### 第2天：中级Shader Graph技术
-1. 节点类型深入：
-   - 数学运算节点
-   - 向量操作节点
-   - 纹理操作节点
+### 第2天：URP材质特性
+1. **Surface属性**：
+   - Metallic/Smoothness设置
+   - Normal映射
+   - Occlusion和细节贴图
 
-2. 顶点修改：
-   - 使用Position节点
-   - 实现顶点波动效果
-   - 风吹草动效果
+2. **渲染设置**：
+   - Alpha剪裁
+   - 接收阴影与投射阴影
+   - 自定义光照
 
-3. 练习项目：
-   - 创建水面波纹效果
-   - 实现旗帜飘动效果
+3. **练习项目**：
+   - 将LearnBasicTransparent.shader转换为URP版本
+   - 创建具有金属感的材质Shader
 
-### 第3天：高级Shader Graph
-1. 自定义函数节点：
-   - 创建HLSL代码片段
-   - 集成到节点系统
+### 第3天：URP高级技术
+1. **多Pass渲染**：
+   - URP Pass结构
+   - 多Pass间的数据传递
+   - 描边与特效叠加
 
-2. 子图（Sub-graph）：
-   - 创建可重用的节点组
-   - 组织复杂Shader
+2. **URP输入结构**：
+   - HLSL宏与函数库区别
+   - Attributes与Varyings结构
+   - URP内置变量
 
-3. 练习项目：
-   - 创建溶解效果
-   - 实现全息投影效果
+3. **练习项目**：
+   - 将LearnVertexWave.shader转换为URP版本
+   - 将LearnOutLine.shader完善为完整的URP版本
 
----
-
-## 阶段二：URP Render Features（3-4天）
+## 阶段二：URP Render Features（5天）
 
 ### 第1天：Render Feature基础
-1. URP渲染管线概述：
-   - 渲染阶段和事件
-   - ScriptableRenderer和渲染Pass
+1. **URP渲染管线结构**：
+   - URP渲染流程概述
+   - ScriptableRenderPass与ScriptableRendererFeature
+   - URP渲染事件与插入点
 
-2. 创建第一个Render Feature：
-   - 基本结构设置
-   - 渲染事件选择
-   - 添加到渲染管线
+2. **第一个Render Feature**：
+   - 基本C#类结构
+   - 渲染通道配置
+   - 插入渲染管线
 
-3. 练习项目：
-   - 创建一个简单的颜色调整Render Feature
-   - 学习如何开启和关闭特效
+3. **练习项目**：
+   - 创建简单的颜色调整Render Feature
+   - 实现场景色调映射效果
 
-### 第2天：屏幕后处理Render Feature
-1. Blit操作：
-   - 理解CommandBuffer
-   - 设置和使用RenderTexture
+### 第2天：Blit操作与后处理
+1. **Blit操作基础**：
+   - CommandBuffer与RTHandle
+   - Blit操作的实现方式
+   - URP中的RTHandle系统
 
-2. 实现常见后处理效果：
-   - 模糊效果
-   - 颜色分离
-   - 像素化效果
+2. **基础后处理效果**：
+   - 将LearnPostProcessing.shader迁移到URP
+   - 添加模糊和色彩分离效果
 
-3. 练习项目：
-   - 创建老电影效果
-   - 实现夜视效果
+3. **练习项目**：
+   - 创建屏幕后处理Render Feature
+   - 实现老电影效果
 
-### 第3天：描边和轮廓Render Feature
-1. 基于深度的描边：
-   - 使用深度纹理
-   - 边缘检测算法
+### 第3天：自定义渲染Pass
+1. **自定义Pass配置**：
+   - RenderTextureDescriptor设置
+   - 过滤与掩码设置
+   - 材质属性配置
 
-2. 基于法线的描边：
-   - 法线纹理生成
-   - 法线差异计算
-
-3. 练习项目：
-   - 创建卡通风格描边效果
-   - 实现透视墙效果
-
-### 第4天：高级Render Feature技术
-1. 多Pass渲染：
-   - Pass之间的数据传递
-   - 复杂效果的分解
-
-2. 性能优化：
+2. **Pass执行控制**：
    - 条件性渲染
+   - 相机过滤
+   - 性能优化
+
+3. **练习项目**：
+   - 创建屏幕空间描边特效
+   - 实现溶解效果的Render Feature
+
+### 第4天：特殊渲染技术
+1. **深度和法线纹理**：
+   - 获取和使用深度纹理
+   - 法线纹理采样
+   - 屏幕空间效果
+
+2. **高级技术**：
+   - 描边检测
+   - 轮廓提取
+   - 视觉风格化
+
+3. **练习项目**：
+   - 实现基于深度的描边Render Feature
+   - 创建卡通渲染风格管线
+
+### 第5天：性能与调试
+1. **性能优化**：
    - 降采样技术
+   - 条件性执行
+   - 资源管理
 
-3. 集成Shader Graph：
-   - 在Render Feature中使用Shader Graph
-   - 参数传递和控制
+2. **调试技术**：
+   - Frame Debugger使用
+   - URP渲染调试
+   - 性能分析
 
-4. 练习项目：
-   - 创建景深效果
-   - 实现屏幕空间反射
+3. **练习项目**：
+   - 优化现有Render Feature
+   - 实现可配置的调试视图
 
----
+## 阶段三：综合项目（4天）
 
-## 阶段三：综合项目（3-4天）
+### 第1天：高级水面系统
+1. **水面Shader**：
+   - 将LearnVertexWave.shader改进为URP水面
+   - 添加折射和反射效果
+   - 深度边缘与泡沫
 
-### 项目1：风格化渲染系统
-1. 创建卡通渲染Shader Graph：
-   - 色阶渲染
-   - 轮廓线
-   - 特效高光
+2. **水面Render Feature**：
+   - 平面反射实现
+   - 水下扭曲效果
+   - 因果波纹
 
-2. 配套的后处理Render Feature：
-   - 整体色调映射
-   - 线条增强
-   - 景深效果
+### 第2天：角色特效系统
+1. **角色Shader**：
+   - 将LearnDissolve.shader转为URP版本
+   - 角色高亮效果
+   - 受击闪白效果
 
-### 项目2：交互式液体效果
-1. 液体Shader Graph：
-   - 波纹动画
-   - 折射效果
-   - 深度颜色渐变
+2. **角色Render Feature**：
+   - 选中角色描边
+   - 残影效果
+   - 特殊状态表现
 
-2. 交互Render Feature：
-   - 碰撞检测
-   - 动态波纹生成
-   - 粒子系统集成
+### 第3天：环境特效系统
+1. **环境Shader**：
+   - 风吹草动效果改进
+   - 环境互动系统
+   - 动态天气效果
 
-### 项目3：高级视觉特效
-1. 能量力场Shader Graph：
-   - 噪声纹理动画
-   - 边缘发光
-   - 扰动效果
+2. **环境Render Feature**：
+   - 全局雾效
+   - 体积光
+   - 大气散射
 
-2. 屏幕扭曲Render Feature：
-   - 热浪效果
-   - 冲击波效果
-   - 时间控制
+### 第4天：后处理特效系统
+1. **将LearnBasicToonShading转为URP版**：
+   - 改进卡通渲染
+   - 整合描边技术
+   - 添加动态效果
 
----
+2. **创建完整特效管线**：
+   - 管理多个Render Feature
+   - 构建特效开关系统
+   - 性能监控与优化
 
-## 学习资源推荐
+## 学习资源
 
-1. 官方文档和教程：
-   - Unity官方URP文档
-   - Shader Graph文档
-   - Unity Learn上的URP课程
+1. **官方文档**：
+   - Unity URP文档
+   - URP Shader参考
+   - URP自定义渲染指南
 
-2. 视频教程：
-   - Unity官方YouTube频道
-   - Brackeys的Shader Graph教程
-   - Freya Holmér的着色器基础
+2. **视频教程**：
+   - Unity官方URP教程
+   - Catlike Coding的URP指南
+   - Code Monkey的渲染Feature教程
 
-3. 项目示例：
-   - Unity官方示例项目
-   - Unity Asset Store上的免费URP示例
+3. **示例项目**：
+   - URP示例项目
+   - GitHub上的开源URP效果
+   - Unity商店免费URP案例
 
-4. 社区资源：
-   - Unity Forum的Shader Graph和URP分区
-   - Github上的开源项目
-
----
+4. **代码参考**：
+   - URP源码（GitHub）
+   - 示例Render Feature
+   - URP Shader库
 
 ## 学习建议
 
-1. 循序渐进：
-   - 先掌握基础，再挑战复杂效果
-   - 每学会一个节点或功能就尝试使用
+1. **从简单开始**：
+   - 先将单个效果从BuildIn转到URP
+   - 理解基本结构变化
+   - 逐步添加复杂功能
 
-2. 实践为主：
-   - 少看多做
-   - 修改示例比从零开始更有效率
+2. **实践与理论结合**：
+   - 每学一个概念就实现一个小功能
+   - 理解渲染管线的每个阶段
+   - 善用Frame Debugger跟踪渲染过程
 
-3. 拆解学习：
-   - 看到喜欢的效果，尝试分析实现原理
-   - 把复杂效果拆分为可理解的小部分
+3. **渐进式开发**：
+   - 先实现基础功能，再添加特效
+   - 分析每个效果的性能影响
+   - 构建可复用的功能模块
 
-4. 记录笔记：
-   - 创建自己的节点和效果库
-   - 记录问题和解决方案
+4. **调试技巧**：
+   - 使用颜色调试Shader问题
+   - 分离功能验证每个部分
+   - 善用条件编译进行测试
 
-5. 学习顺序：
-   - 先学Shader Graph（1-2周）
-   - 再学Render Feature（2-3周）
-   - 最后结合两者创建完整效果（1周）
+## 技能水平目标
 
-这个学习计划大约需要2-3周完成，每天4-6小时的学习时间。完成后，你应该能够使用URP的特性创建各种炫酷的视觉效果。
+完成本学习计划后，预期达到的技术水平：
+
+1. **URP Shader开发**：初级到中级水平，能够独立开发各类基础和特效着色器
+2. **Render Features开发**：初级到中级水平，能够定制渲染通道和后处理效果
+3. **综合应用**：能够将Shader和Render Features结合创建完整游戏视觉效果
+4. **技术定位**：能够胜任中小型项目的渲染开发工作，或在大型团队中负责特定渲染模块
+
+通过此学习路径，您将能够从BuildIn管线平稳过渡到URP渲染管线，并利用手写Shader和Render Features的组合创建高质量的视觉效果。
