@@ -27,12 +27,14 @@ Shader "Custom/URPTexture"
 
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 
+			// 声明纹理
 			TEXTURE2D(_MainTex);
+			// 声明采样器状态
 			SAMPLER(sampler_MainTex);
 
 			//包裹材质属性
-			CBUFFER_START(UnityPerMaterial)
-			float4 _MainTex_ST;
+			CBUFFER_START(UnityPerMaterial) //UnityPerMaterial是命名约定，表示"每个材质的Unity属性"
+			float4 _MainTex_ST;   //  纹理缩放和平移 (_ST.xy 缩放, _ST.zw 偏移)
 			float4 _Color;
 			float _Intensity;
 			CBUFFER_END

@@ -1,51 +1,92 @@
 # URP Shader与Render Features学习计划
 
-## 阶段一：URP Shader基础（3天）
+## 阶段一：URP Shader基础（4天）
 
 ### 第1天：URP Shader结构与基础
 1. **URP Shader结构差异**：
    - URP管线下的Shader基本结构
    - ShaderLab与HLSL部分的区别
    - URP特有标签和渲染队列
+   - CBUFFER使用与SRP Batcher优化
 
-2. **URP内置光照模型**：
-   - Universal Lit模型
-   - Universal Unlit模型
-   - 光照函数库使用
+2. **基础纹理处理**：
+   - URP纹理声明和采样方式
+   - UV操作与动画
+   - 简单颜色混合
 
 3. **练习项目**：
    - 将LearnTexture.shader转换为URP版本
-   - 实现URP基础纹理Shader
+   - 实现URP基础纹理动画Shader
 
-### 第2天：URP材质特性
+### 第2天：URP材质特性（无光照部分）
 1. **Surface属性**：
-   - Metallic/Smoothness设置
-   - Normal映射
-   - Occlusion和细节贴图
+   - Alpha透明与混合模式
+   - Alpha剪裁（Cutout）实现
+   - 纹理遮罩与混合技术
 
-2. **渲染设置**：
-   - Alpha剪裁
-   - 接收阴影与投射阴影
-   - 自定义光照
+2. **顶点操作与动画**：
+   - URP中的顶点变换
+   - 顶点颜色使用
+   - 顶点动画实现
 
 3. **练习项目**：
    - 将LearnBasicTransparent.shader转换为URP版本
-   - 创建具有金属感的材质Shader
+   - 实现基础材质混合效果
 
-### 第3天：URP高级技术
-1. **多Pass渲染**：
-   - URP Pass结构
-   - 多Pass间的数据传递
-   - 描边与特效叠加
+### 第3天：URP高级特效技术
+1. **特效Shader技术**：
+   - 溶解效果实现
+   - 扭曲与波动效果
+   - 屏幕空间效果基础
 
-2. **URP输入结构**：
-   - HLSL宏与函数库区别
-   - Attributes与Varyings结构
-   - URP内置变量
+2. **细节表现技术**：
+   - 细节纹理叠加
+   - 噪声图应用
+   - 流动效果
 
 3. **练习项目**：
+   - 将LearnDissolve.shader转换为URP版本
    - 将LearnVertexWave.shader转换为URP版本
+
+### 第4天：URP光照模型专题
+1. **URP光照基础**：
+   - Universal Lit模型详解
+   - 光照数据结构
+   - 主光源与附加光源
+
+2. **PBR材质设置**：
+   - Metallic/Smoothness工作流
+   - Normal映射实现
+   - Occlusion和细节贴图
+
+3. **自定义光照模型**：
+   - 半Lambert光照模型
+   - 卡通光照实现
+   - 光照函数定制
+
+4. **接收与投射阴影**：
+   - URP中的阴影Pass
+   - 自定义阴影接收
+   - 半透明阴影处理
+
+5. **练习项目**：
+   - 创建完整PBR材质Shader
+   - 将LearnBasicToonShading.shader转换为URP版本
+
+### 第5天：URP多Pass渲染
+1. **Pass结构与通信**：
+   - URP Pass类型与标签
+   - 多Pass间的数据传递
+   - Pass执行顺序控制
+
+2. **特殊效果组合**：
+   - 描边与特效叠加
+   - 轮廓高亮
+   - 多层效果
+
+3. **练习项目**：
    - 将LearnOutLine.shader完善为完整的URP版本
+   - 创建多Pass特效组合Shader
 
 ## 阶段二：URP Render Features（5天）
 
