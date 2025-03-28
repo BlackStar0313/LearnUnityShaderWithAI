@@ -55,8 +55,10 @@ Shader "Custom/URPLitLambertDiffuse"
 				//获取主光源
 				Light mainLight = GetMainLight();
 
-				// 计算Lambert漫反射
-				float NdotL = max(0, dot(input.normalWS, mainLight.direction));
+				// // 计算Lambert漫反射
+				// float NdotL = max(0, dot(input.normalWS, mainLight.direction));
+				// 计算半Lambert漫反射(更柔和的阴影)
+				float NdotL = dot(input.normalWS, mainLight.direction) * 0.5 + 0.5; // 从[-1,1]映射到[0,1]
 				half3 diffuse = _BaseColor.rgb * mainLight.color * NdotL;
 
 				//计算环境光
