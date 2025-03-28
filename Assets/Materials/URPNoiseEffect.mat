@@ -70,7 +70,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NoiseTex:
-        m_Texture: {fileID: 2800000, guid: 125c1dae600144f3ab737337bd85238a, type: 3}
+        m_Texture: {fileID: 2800000, guid: 0c0b5fb7539a24c59ab4605f50146b01, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -118,8 +118,8 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Metallic: 0
-    - _NoiseScale: 2.03
-    - _NoiseStrength: 0.21
+    - _NoiseScale: 4.73
+    - _NoiseStrength: 0.636
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueOffset: 0
