@@ -115,7 +115,7 @@ Shader "Custom/URPToonShading"
 
 				// 渐变纹理
 				if (_UseRamp > 0.5) {
-					toonRamp = SAMPLE_TEXTURE2D(_RampTex, sampler_RampTex, float2(toonRamp, 0)).r;
+					toonRamp = SAMPLE_TEXTURE2D(_RampTex, sampler_RampTex, float2(toonRamp, 0.5)).r;
 				}
 				
 				// 阴影颜色
@@ -136,5 +136,52 @@ Shader "Custom/URPToonShading"
 		}
 
 		// 第二个Pass - 轮廓线
+		Pass
+		{
+			Name "Outline"
+			Tags {}
+			Cull Front //踢出正面  只渲染背面
+			HLSLPROGRAM
+			#pragma vertex vert
+			#pragma fragment frag
+
+			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+
+			CBUFFER_START(UnityPerMaterial)
+			float4 _OutlineColor;
+			float _OutlineWidth;
+			CBUFFER_END
+
+			struct Attributes
+			{
+				float4 positionOS : POSITION;
+				float3 normalOS : NORMAL;
+			};
+
+			struct Varyings
+			{
+				float4 positionCS : SV_POSITION;
+			};
+
+			Varyings vert(Attributes input)
+			{
+				Varyings output;
+
+				// 法线方向外扩点
+				float3 positionOS = input.positionOS.xyz + input.normalOS * _OutlineWidth;
+				output.positionCS = TransformObjectToHClip(positionOS);
+				return output;
+			}
+
+			half4 frag(Varyings input) : SV_TARGET
+			{
+				return _OutlineColor;
+			}
+
+			ENDHLSL
+		}
+
+		// // 第三个Pass - 投射阴影
+		// UsePass "Universal Render Pipeline/Lit/ShadowCaster"
 	}
 }

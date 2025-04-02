@@ -82,7 +82,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _RampTex:
-        m_Texture: {fileID: 2800000, guid: 65e853b5ea2b340ed8fe3cfbdaec6348, type: 3}
+        m_Texture: {fileID: 2800000, guid: 69d0cc19cd98c4c2b9e66c970bc20f93, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
@@ -123,12 +123,12 @@ Material:
     - _GlossyReflections: 0
     - _Metallic: 0
     - _OcclusionStrength: 1
-    - _OutlineWidth: 0.0198
+    - _OutlineWidth: 0.0662
     - _Parallax: 0.005
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _ShadowSmoothness: 0.096
-    - _ShadowThreshold: 0.302
+    - _ShadowSmoothness: 0.101
+    - _ShadowThreshold: 0.317
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
