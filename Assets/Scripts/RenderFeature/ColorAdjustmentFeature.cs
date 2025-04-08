@@ -35,13 +35,13 @@ public class ColorAdjustmentFeature : ScriptableRendererFeature
             return;
         }
         // m_Material = new Material(shader);
-        if (m_Material == null)
-        {
-            Debug.LogError("无法创建材质!");
-            return;
-        }
-        m_RenderPass = new ColorAdjustmentPass(m_Material, settings);
-        m_RenderPass.renderPassEvent = settings.renderPassEvent;
+        // if (m_Material == null)
+        // {
+        //     Debug.LogError("无法创建材质!");
+        //     return;
+        // }
+        // m_RenderPass = new ColorAdjustmentPass(m_Material, settings);
+        // m_RenderPass.renderPassEvent = settings.renderPassEvent;
     }
 
     // 添加渲染通道方法
