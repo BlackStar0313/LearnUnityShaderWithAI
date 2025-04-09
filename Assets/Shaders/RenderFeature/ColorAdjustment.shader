@@ -49,7 +49,7 @@
                {
                    // 返回纯红色
                    half4 color = SAMPLE_TEXTURE2D(_BlitTexture, sampler_LinearClamp, input.texcoord);
-                   half4 addValue = half4(1, 0, 0, 1);
+                   half4 addValue = half4(0.25, 0.25, 0.25, 1);
                    return color + addValue * _Intensity;
                }
                ENDHLSL
