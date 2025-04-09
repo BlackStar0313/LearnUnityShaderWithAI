@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: RFAdjustColorRenderFeature
   m_EditorClassIdentifier: 
   m_Active: 1
-  Intensity: 1
+  Intensity: 0.46
   m_Shader: {fileID: 4800000, guid: 65bf024f19ee9493bb4a6e180e5b75da, type: 3}
 --- !u!114 &11400000
 MonoBehaviour:

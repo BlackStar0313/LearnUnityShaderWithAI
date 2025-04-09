@@ -66,6 +66,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Active: 1
   settings:
-    horizontalBlur: 0.052
+    horizontalBlur: 0.035
     verticalBlur: 0.052
   shader: {fileID: 4800000, guid: 30f479a60b3184df8b21e31c0dc3394d, type: 3}

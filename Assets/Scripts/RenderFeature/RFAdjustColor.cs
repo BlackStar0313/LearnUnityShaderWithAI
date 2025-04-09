@@ -75,7 +75,16 @@ public class RFAdjustColorRenderPass : ScriptableRenderPass
         UniversalResourceData resourceData = frameContext.Get<UniversalResourceData>();
         UniversalCameraData cameraData = frameContext.Get<UniversalCameraData>();
 
+        if (resourceData.isActiveTargetBackBuffer)
+        {
+            return;
+        }
+
         TextureHandle srcCamColor = resourceData.activeColorTexture;
+        if (!srcCamColor.IsValid())
+        {
+            return;
+        }
 
         m_RenderTextureDescriptor.width = cameraData.cameraTargetDescriptor.width;
         m_RenderTextureDescriptor.height = cameraData.cameraTargetDescriptor.height;
@@ -96,8 +105,13 @@ public class RFAdjustColorRenderPass : ScriptableRenderPass
         RenderGraphUtils.BlitMaterialParameters blitParams = new(srcCamColor, dst, m_Material, 0);
         renderGraph.AddBlitPass(blitParams, "AdjustColor");
 
+        RenderGraphUtils.BlitMaterialParameters paraHorizontal = new(dst, srcCamColor, m_Material, 0);
+        renderGraph.AddBlitPass(paraHorizontal, "AdjustColor222222");
+
         //将处理后的结果写入颜色缓冲区.
-        renderGraph.AddCopyPass(dst, resourceData.activeColorTexture);
+        // renderGraph.AddCopyPass(dst, resourceData.activeColorTexture);
+        // resourceData.PassColorAttachment(dst);
+
         // using (var builder = renderGraph.AddRasterRenderPass<FinalCopyPassData>("FinalCopyPass", out var passData))
         // {
         //     builder.SetRenderAttachment(passData.destination, 0);
