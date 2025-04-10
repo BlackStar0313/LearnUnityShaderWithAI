@@ -17,7 +17,7 @@ class RFSwtichColorFeature : ScriptableRendererFeature
         }
 
         m_RenderPass = new RFSwitchColorPass(m_Shader);
-        // m_RenderPass.Init();
+        m_RenderPass.Init();
     }
 
     public override void AddRenderPasses(ScriptableRenderer renderer, ref RenderingData renderingData)
