@@ -19,8 +19,7 @@
                #pragma fragment frag
                
                #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
-               #include "Packages/com.unity.render-pipelines.core/Runtime/Utilities/Blit.hlsl"
-               
+               #include "Packages/com.unity.render-pipelines.core/Runtime/Utilities/Blit.hlsl"               
                CBUFFER_START(UnityPerMaterial)
                float _Intensity;
                CBUFFER_END
