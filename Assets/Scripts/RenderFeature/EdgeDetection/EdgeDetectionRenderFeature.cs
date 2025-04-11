@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
 public class EdgeDetectionRenderFeature : ScriptableRendererFeature
@@ -35,6 +36,16 @@ public class EdgeDetectionRenderFeature : ScriptableRendererFeature
     private bool IsActive(RenderingData renderingData)
     {
         if (m_Material == null)
+            return false;
+
+        EdgeDetectionVolume volume = VolumeManager.instance.stack.GetComponent<EdgeDetectionVolume>();
+        if (!volume || !volume.EnableEdgeDetection.value)
+            return false;
+
+        // Don't render for some views.
+        if (renderingData.cameraData.cameraType == CameraType.Preview
+            || renderingData.cameraData.cameraType == CameraType.Reflection
+            || UniversalRenderer.IsOffscreenDepthTexture(ref renderingData.cameraData))
             return false;
 
         return true;

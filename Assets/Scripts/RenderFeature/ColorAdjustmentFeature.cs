@@ -45,10 +45,7 @@ public class ColorAdjustmentFeature : ScriptableRendererFeature
     }
 
     // 添加渲染通道方法
-    public override void AddRenderPasses(
-        ScriptableRenderer renderer,
-        ref RenderingData renderingData
-    )
+    public override void AddRenderPasses(ScriptableRenderer renderer, ref RenderingData renderingData)
     {
         // 不要调用renderer.EnqueuePass(m_RenderPass)!
         // 在Unity 6中，你不需要做任何事情，因为渲染通道会通过RecordRenderGraph添加
@@ -166,13 +163,7 @@ public class ColorAdjustmentPass : ScriptableRenderPass
                     data.material.SetFloat(data.saturationId, data.saturation);
 
                     // 使用Blitter替代CommandBuffer.Blit
-                    Blitter.BlitCameraTexture(
-                        context.cmd,
-                        data.sourceTexture,
-                        data.tempTarget,
-                        data.material,
-                        0
-                    );
+                    Blitter.BlitCameraTexture(context.cmd, data.sourceTexture, data.tempTarget, data.material, 0);
 
                     // 将结果从临时纹理复制回最终目标
                     Blitter.BlitCameraTexture(context.cmd, data.tempTarget, data.finalTarget);

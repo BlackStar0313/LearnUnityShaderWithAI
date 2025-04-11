@@ -32,60 +32,75 @@ public class EdgeDetectionRenderPass : ScriptableRenderPass
 
     public void SetUp()
     {
-        m_Material.SetColor(s_EdgeColorId, new Color(1, 0, 0, 1));
-        m_Material.SetFloat(s_EdgeThicknessId, 5);
-        m_Material.SetFloat(s_EdgeThresholdId, 1f);
+        EdgeDetectionVolume volume = VolumeManager.instance.stack.GetComponent<EdgeDetectionVolume>();
+        if (!volume)
+            return;
+
+        m_Material.SetColor(s_EdgeColorId, volume.EdgeColor.value);
+        m_Material.SetFloat(s_EdgeThicknessId, volume.EdgeThickness.value);
+        m_Material.SetFloat(s_EdgeThresholdId, volume.EdgeThreshold.value);
     }
 
     public void Dispose() { }
 
     public override void RecordRenderGraph(RenderGraph renderGraph, ContextContainer frameData)
     {
+
+        UniversalResourceData resourceData = frameData.Get<UniversalResourceData>();
         using (var builder = renderGraph.AddRasterRenderPass<PassData>("EdgeDetectionRenderPass", out PassData data))
         {
-            //pass data
-            UniversalResourceData resourceData = frameData.Get<UniversalResourceData>();
-            UniversalCameraData cameraData = frameData.Get<UniversalCameraData>();
-
-            if (resourceData.isActiveTargetBackBuffer || !resourceData.activeColorTexture.IsValid())
-                return;
-
-            //创建临时纹理
-            RenderTextureDescriptor tempDesc = cameraData.cameraTargetDescriptor;
-            tempDesc.depthBufferBits = 0;
-
-            TextureHandle tempTarget = UniversalRenderer.CreateRenderGraphTexture(
-                renderGraph,
-                tempDesc,
-                "EdgeDetectionTempTarget",
-                false
-            );
-
-            data.Material = m_Material;
-            data.SourceTexture = resourceData.activeColorTexture;
-            // data.TempTarget = tempTarget;
-            data.DepthTexture = resourceData.activeDepthTexture;
-            data.DepthNormalsTexture = resourceData.cameraNormalsTexture;
-
-            //read
-            // builder.UseTexture(data.SourceTexture);
-            // builder.UseTexture(data.DepthTexture);
-            // builder.UseTexture(data.DepthNormalsTexture);
-            //write
-            builder.SetRenderAttachment(data.SourceTexture, 0, AccessFlags.ReadWrite);
-            // builder.SetRenderAttachmentDepth(resourceData.activeDepthTexture, AccessFlags.ReadWrite);
-
-            //process
-            //process
+            builder.SetRenderAttachment(resourceData.activeColorTexture, 0);
+            builder.UseAllGlobalTextures(true);
+            builder.AllowPassCulling(false);
             builder.SetRenderFunc<PassData>((PassData data, RasterGraphContext context) => ExecutePass(data, context));
         }
-    }
 
+        // using (var builder = renderGraph.AddRasterRenderPass<PassData>("EdgeDetectionRenderPass", out PassData data))
+        // {
+        //     //pass data
+        //     UniversalResourceData resourceData = frameData.Get<UniversalResourceData>();
+        //     UniversalCameraData cameraData = frameData.Get<UniversalCameraData>();
+
+        //     if (resourceData.isActiveTargetBackBuffer || !resourceData.activeColorTexture.IsValid())
+        //         return;
+
+        //     //创建临时纹理
+        //     // RenderTextureDescriptor tempDesc = cameraData.cameraTargetDescriptor;
+        //     // tempDesc.depthBufferBits = 0;
+
+        //     // TextureHandle tempTarget = UniversalRenderer.CreateRenderGraphTexture(
+        //     //     renderGraph,
+        //     //     tempDesc,
+        //     //     "EdgeDetectionTempTarget",
+        //     //     false
+        //     // );
+
+        //     data.Material = m_Material;
+        //     data.SourceTexture = resourceData.activeColorTexture;
+        //     // data.TempTarget = tempTarget;
+        //     data.DepthTexture = resourceData.activeDepthTexture;
+        //     data.DepthNormalsTexture = resourceData.cameraNormalsTexture;
+
+        //     //read
+        //     // builder.UseTexture(data.SourceTexture);
+        //     // builder.UseTexture(data.DepthTexture);
+        //     // builder.UseTexture(data.DepthNormalsTexture);
+        //     //write
+        //     builder.SetRenderAttachment(data.SourceTexture, 0, AccessFlags.ReadWrite);
+        //     // builder.SetRenderAttachmentDepth(resourceData.activeDepthTexture, AccessFlags.ReadWrite);
+
+        //     //process
+        //     builder.SetRenderFunc<PassData>((PassData data, RasterGraphContext context) => ExecutePass(data, context));
+        // }
+    }
+    
     private void ExecutePass(PassData data, RasterGraphContext context)
     {
-        // context.cmd.SetGlobalTexture("_CameraDepthTexture", data.DepthTexture);
-        // context.cmd.SetGlobalTexture("_CameraDepthNormalsTexture", data.DepthNormalsTexture);
-
-        Blitter.BlitTexture(context.cmd, data.SourceTexture, new Vector4(1, 1, 0, 0), data.Material, 0);
+        Blitter.BlitTexture(context.cmd, Vector2.one, m_Material, 0);
     }
+
+    // private void ExecutePass(PassData data, RasterGraphContext context)
+    // {
+    //     Blitter.BlitTexture(context.cmd, data.SourceTexture, new Vector4(1, 1, 0, 0), data.Material, 0);
+    // }
 }
