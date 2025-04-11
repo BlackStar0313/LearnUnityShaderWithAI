@@ -45,7 +45,6 @@ public class EdgeDetectionRenderPass : ScriptableRenderPass
 
     public override void RecordRenderGraph(RenderGraph renderGraph, ContextContainer frameData)
     {
-
         UniversalResourceData resourceData = frameData.Get<UniversalResourceData>();
         using (var builder = renderGraph.AddRasterRenderPass<PassData>("EdgeDetectionRenderPass", out PassData data))
         {
@@ -93,7 +92,7 @@ public class EdgeDetectionRenderPass : ScriptableRenderPass
         //     builder.SetRenderFunc<PassData>((PassData data, RasterGraphContext context) => ExecutePass(data, context));
         // }
     }
-    
+
     private void ExecutePass(PassData data, RasterGraphContext context)
     {
         Blitter.BlitTexture(context.cmd, Vector2.one, m_Material, 0);

@@ -29,13 +29,13 @@ MonoBehaviour:
   active: 1
   EdgeThreshold:
     m_OverrideState: 1
-    m_Value: 0.123
+    m_Value: 1
   EdgeColor:
     m_OverrideState: 1
     m_Value: {r: 0, g: 0, b: 0, a: 1}
   EdgeThickness:
     m_OverrideState: 1
-    m_Value: 3.24
+    m_Value: 5
   EnableEdgeDetection:
     m_OverrideState: 1
     m_Value: 1
