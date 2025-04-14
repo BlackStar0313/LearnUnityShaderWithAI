@@ -7,6 +7,8 @@ public class ColorGradingFeature : ScriptableRendererFeature
     [SerializeField]
     private Shader m_Shader;
 
+    private Material m_Material;
+
     private ColorGradingPass m_ColorGradingPass;
 
     public override void Create()
@@ -17,8 +19,10 @@ public class ColorGradingFeature : ScriptableRendererFeature
             return;
         }
 
+        m_Material = new Material(m_Shader);
+
         m_ColorGradingPass = new ColorGradingPass();
-        m_ColorGradingPass.Init();
+        m_ColorGradingPass.Init(m_Material);
     }
 
     public override void AddRenderPasses(ScriptableRenderer renderer, ref RenderingData renderingData)
@@ -40,6 +44,13 @@ public class ColorGradingFeature : ScriptableRendererFeature
 
     protected override void Dispose(bool disposing)
     {
-        m_ColorGradingPass.Dispose();
+        if (Application.isPlaying)
+        {
+            Object.Destroy(m_Material);
+        }
+        else
+        {
+            Object.DestroyImmediate(m_Material);
+        }
     }
 }

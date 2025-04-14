@@ -29,7 +29,8 @@ Shader "Custom/ColorGrading"
 			{
 				half4 baseColor = SAMPLE_TEXTURE2D(_BlitTexture, sampler_LinearClamp, input.texcoord);
 
-				return baseColor;
+				half4 addColor = half4(0.5, 0.5, 0.5, 1);
+				return baseColor * addColor;
 			}
 
 			ENDHLSL
