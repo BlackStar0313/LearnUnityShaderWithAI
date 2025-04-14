@@ -29,16 +29,16 @@ MonoBehaviour:
   active: 1
   Intensity:
     m_OverrideState: 1
-    m_Value: 1.38
+    m_Value: 1.98
   Radius:
     m_OverrideState: 1
-    m_Value: 0.505
+    m_Value: 0.29
   SampleCount:
     m_OverrideState: 1
-    m_Value: 12.1
+    m_Value: 11
   BlurSize:
     m_OverrideState: 1
-    m_Value: 1.17
+    m_Value: 0.38
   Visualize:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 1
