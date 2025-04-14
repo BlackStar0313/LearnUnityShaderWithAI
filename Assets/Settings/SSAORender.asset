@@ -24,8 +24,9 @@ MonoBehaviour:
     probeSamplingDebugMesh: {fileID: 0}
     probeSamplingDebugTexture: {fileID: 0}
     probeVolumeBlendStatesCS: {fileID: 0}
-  m_RendererFeatures: []
-  m_RendererFeatureMap: 
+  m_RendererFeatures:
+  - {fileID: 1352815626834581704}
+  m_RendererFeatureMap: c8981224a52ac612
   m_UseNativeRenderPass: 0
   xrSystemData: {fileID: 0}
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
@@ -51,3 +52,18 @@ MonoBehaviour:
   m_DepthTextureFormat: 0
   m_AccurateGbufferNormals: 0
   m_IntermediateTextureMode: 1
+--- !u!114 &1352815626834581704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4995188c746444b14a0a8a48c38bf94b, type: 3}
+  m_Name: SSAORenderFeature
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  m_AoShader: {fileID: 4800000, guid: a7cb1f79013bb42bda23032311b2a68a, type: 3}
+  m_BlurShader: {fileID: 4800000, guid: c13f23ac53b474417aab472ed133871a, type: 3}

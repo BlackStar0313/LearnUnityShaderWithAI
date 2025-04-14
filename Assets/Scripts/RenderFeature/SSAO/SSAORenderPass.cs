@@ -103,24 +103,24 @@ public class SSAORenderPass : ScriptableRenderPass
         );
         renderGraph.AddBlitPass(vBlurYParams, "Vertical Blur Y");
 
-        //最终合成pass
-        if (m_IsVisualizeAO)
-        {
-            //直接显示AO
-            renderGraph.AddCopyPass(aoTexutre, resourceData.activeColorTexture);
-        }
-        else
-        {
-            // 与场景颜色融合
-            RenderGraphUtils.BlitMaterialParameters blendParams = new RenderGraphUtils.BlitMaterialParameters(
-                resourceData.activeColorTexture,
-                resourceData.activeColorTexture,
-                m_AoMaterial,
-                1
-            );
-            m_AoMaterial.SetTexture("_AOTexture", aoTexutre);
-            renderGraph.AddBlitPass(blendParams, "Blend AO");
-        }
+        // //最终合成pass
+        // if (m_IsVisualizeAO)
+        // {
+        //     //直接显示AO
+        //     renderGraph.AddCopyPass(aoTexutre, resourceData.activeColorTexture);
+        // }
+        // else
+        // {
+        //     // 与场景颜色融合
+        //     RenderGraphUtils.BlitMaterialParameters blendParams = new RenderGraphUtils.BlitMaterialParameters(
+        //         resourceData.activeColorTexture,
+        //         resourceData.activeColorTexture,
+        //         m_AoMaterial,
+        //         1
+        //     );
+        //     m_AoMaterial.SetTexture("_AOTexture", aoTexutre);
+        //     renderGraph.AddBlitPass(blendParams, "Blend AO");
+        // }
 
         // using (var builder = renderGraph.AddRasterRenderPass<PassData>("SSAO Render Pass", out PassData data)) { }
     }
