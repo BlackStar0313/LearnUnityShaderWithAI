@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
-  m_Name: ColorGradingVolumeProfile
+  m_Name: Water
   m_EditorClassIdentifier: 
   components:
-  - {fileID: 3616379070900771624}
---- !u!114 &3616379070900771624
+  - {fileID: 4764118726776679915}
+--- !u!114 &4764118726776679915
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -32,25 +32,25 @@ MonoBehaviour:
     m_Value: 1
   Brightness:
     m_OverrideState: 1
-    m_Value: -0.061
+    m_Value: 0.091
   Contrast:
     m_OverrideState: 1
-    m_Value: -0.1
+    m_Value: 0
   Saturation:
     m_OverrideState: 1
-    m_Value: -0.094
+    m_Value: 0
   Temperature:
     m_OverrideState: 1
-    m_Value: -0.003
+    m_Value: 0.357
   Tint:
     m_OverrideState: 0
-    m_Value: -1
+    m_Value: 0
   ShadowsColor:
     m_OverrideState: 1
-    m_Value: {r: 0, g: 0.2313726, b: 1, a: 1}
+    m_Value: {r: 0.2783019, g: 0.75481147, b: 1, a: 1}
   MidtonesColor:
     m_OverrideState: 1
-    m_Value: {r: 0.07075471, g: 0.7313023, b: 1, a: 1}
+    m_Value: {r: 0.17221431, g: 0.26533002, b: 0.8490566, a: 1}
   HighlightsColor:
     m_OverrideState: 1
-    m_Value: {r: 0.9433962, g: 0.17354932, b: 0.17354932, a: 1}
+    m_Value: {r: 0.5, g: 0.5, b: 0.5, a: 1}
