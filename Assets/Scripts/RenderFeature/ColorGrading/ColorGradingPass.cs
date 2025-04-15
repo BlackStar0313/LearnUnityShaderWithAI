@@ -20,7 +20,22 @@ public class ColorGradingPass : ScriptableRenderPass
         renderPassEvent = RenderPassEvent.BeforeRenderingPostProcessing;
     }
 
-    public void SetUp() { }
+    public void SetUp()
+    {
+        var volume = VolumeManager.instance.stack.GetComponent<ColorGradingVolumeComponent>();
+
+        if (volume != null && volume.IsActive())
+        {
+            m_Material.SetFloat("_Brightness", volume.Brightness.value);
+            m_Material.SetFloat("_Contrast", volume.Contrast.value);
+            m_Material.SetFloat("_Saturation", volume.Saturation.value);
+            m_Material.SetFloat("_Temperature", volume.Temperature.value);
+            m_Material.SetFloat("_Tint", volume.Tint.value);
+            m_Material.SetColor("_ShadowsColor", volume.ShadowsColor.value);
+            m_Material.SetColor("_MidtonesColor", volume.MidtonesColor.value);
+            m_Material.SetColor("_HighlightsColor", volume.HighlightsColor.value);
+        }
+    }
 
     public void Dispose() { }
 
