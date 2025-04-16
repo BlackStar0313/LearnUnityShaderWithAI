@@ -11,6 +11,10 @@ public class ColorGradingFeature : ScriptableRendererFeature
 
     private ColorGradingPass m_ColorGradingPass;
 
+    [Header("Preformance Settings")]
+    [SerializeField, Range(1, 4)]
+    private int m_DownsampleFactor = 1;
+
     public override void Create()
     {
         if (m_Shader == null)
@@ -40,6 +44,7 @@ public class ColorGradingFeature : ScriptableRendererFeature
     public override void SetupRenderPasses(ScriptableRenderer renderer, in RenderingData renderingData)
     {
         m_ColorGradingPass.SetUp();
+        m_ColorGradingPass.SetDownsampleFactor(m_DownsampleFactor);
     }
 
     protected override void Dispose(bool disposing)
@@ -52,5 +57,11 @@ public class ColorGradingFeature : ScriptableRendererFeature
         {
             Object.DestroyImmediate(m_Material);
         }
+    }
+
+    public void SetQuality(bool highQuality)
+    {
+        m_DownsampleFactor = highQuality ? 1 : 4;
+        m_ColorGradingPass.SetDownsampleFactor(m_DownsampleFactor);
     }
 }

@@ -35,13 +35,13 @@ MonoBehaviour:
     m_Value: 0.091
   Contrast:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 0.091
   Saturation:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 0.37
   Temperature:
     m_OverrideState: 1
-    m_Value: 0.357
+    m_Value: -0.468
   Tint:
     m_OverrideState: 0
     m_Value: 0

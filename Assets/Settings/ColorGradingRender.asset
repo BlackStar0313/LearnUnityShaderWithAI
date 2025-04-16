@@ -66,3 +66,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Active: 1
   m_Shader: {fileID: 4800000, guid: 35b74575fc937496e8f7d3aba995fefe, type: 3}
+  m_DownsampleFactor: 4

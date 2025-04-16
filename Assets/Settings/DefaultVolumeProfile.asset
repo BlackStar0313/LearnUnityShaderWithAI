@@ -349,6 +349,30 @@ MonoBehaviour:
   m_EnableColorGrading:
     m_OverrideState: 1
     m_Value: 0
+  Brightness:
+    m_OverrideState: 1
+    m_Value: 0
+  Contrast:
+    m_OverrideState: 1
+    m_Value: 0
+  Saturation:
+    m_OverrideState: 1
+    m_Value: 0
+  Temperature:
+    m_OverrideState: 1
+    m_Value: 0
+  Tint:
+    m_OverrideState: 1
+    m_Value: 0
+  ShadowsColor:
+    m_OverrideState: 1
+    m_Value: {r: 1, g: 1, b: 1, a: 1}
+  MidtonesColor:
+    m_OverrideState: 1
+    m_Value: {r: 1, g: 1, b: 1, a: 1}
+  HighlightsColor:
+    m_OverrideState: 1
+    m_Value: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &-4463884970436517307
 MonoBehaviour:
   m_ObjectHideFlags: 3

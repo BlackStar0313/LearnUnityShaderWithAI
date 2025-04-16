@@ -17,9 +17,9 @@ public class ColorGradingVolumeComponent : VolumeComponent
     public ClampedFloatParameter Tint = new ClampedFloatParameter(0f, -1f, 1f);
 
     // 色彩平衡（分色条控制)
-    public ColorParameter ShadowsColor = new ColorParameter(Color.gray);
-    public ColorParameter MidtonesColor = new ColorParameter(Color.gray);
-    public ColorParameter HighlightsColor = new ColorParameter(Color.gray);
+    public ColorParameter ShadowsColor = new ColorParameter(Color.white);
+    public ColorParameter MidtonesColor = new ColorParameter(Color.white);
+    public ColorParameter HighlightsColor = new ColorParameter(Color.white);
 
     public bool IsActive()
     {

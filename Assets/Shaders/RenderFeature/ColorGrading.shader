@@ -53,8 +53,8 @@ Shader "Custom/ColorGrading"
 			half3 ApplyTemperature(half3 color , float temperature)
 			{
 				//简单的色温调节 （温度/冷色偏移
-				half3 warm  = half3(1.0, 1.0, 1.0);   //暖色
-				half3 cool = half3(0.0, 0.0, 0.0);   //冷色
+				half3 warm = half3(1.1, 0.85, 0.7);   // 暖色（黄橙色调）
+				half3 cool = half3(0.7, 0.85, 1.1);   // 冷色（蓝色调）
 				
 				return color * lerp(cool, warm, temperature * 0.5 + 0.5);
 			}
